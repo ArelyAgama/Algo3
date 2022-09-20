@@ -1,0 +1,16 @@
+1) ¿Qué crítica le harías al protocolo de #estaHerido y #noEstaHerido? (en vez de tener solo el mensaje #estaHerido y hacer “#estaHerido not” para saber la negación)
+
+Nos parece que la idea de tener dos mensajes no es necesario, ya que la informacion que recibe aquel que envia esos mensajes en realidad es la misma, solo que con distinta presentación.
+
+
+
+2) ¿Qué opinan de que para algunas funcionalidades tenemos 3 tests para el mismo comportamiento pero aplicando a cada uno de los combatientes (Arthas, Mankrik y Olgra)
+
+Por lo que venimos hablando en clase, parece muy conveniente tener una misma clase "combatiente", o similar, que cumpla con las funcionalidades básicas que se espera de los tres combatientes que tenemos para el ejercicio, además de evadir código repetido si es que queremos sumar más combatientes en un futuro.
+También, puede ser una buena idea expandir en clases que deriven de la clase combatiente que modelen humanos, orcos, y ademas clases que deriven de ellas para tener variantes de los mismos (por ejemplo si algún tipo de orco tiene 2 de fuerza o 1, como se ve en el ejercicio).
+
+
+
+3) ¿Cómo modelaron el resultado de haber desarrollado un combate? ¿qué opciones consideraron y por qué se quedaron con la que entregaron y por qué descartaron a las otras?
+
+Creamos un nuevo objeto llamado Resultado de manera que pudiéramos guardar en él los datos importante para comparar al momento de evaluar el resultado de la batalla. Al principio de la realización de esa parte del ejercicio habíamos implementado el mismo como un arreglo con la información importante, sin embargo la legibilidad no era la deseada, lo que nos hizo llegar a la variante usada en la entrega final.
