@@ -1,0 +1,26 @@
+﻿1. Aporte de los mensajes de DD
+
+
+En double dispatch tenemos dos llamados: el primero es un mensaje polimórfico para uno de los dos objetos involucrados, que incluye como colaborador externo al otro objeto que participa en el problema. Al tener dos objetos polimórficos, el primer mensaje nos libera de una de las instancias de polimorfismo, pero si nos quedamos con ese mensaje únicamente, tendríamos que adquirir información adicional del segundo objeto, posiblemente con rotura del encapsulamiento (en este trabajo podemos ver que esta rotura se ve en el exceso de ifs con los que contaban los métodos para llevar a cabo sus tareas). Para evitar esto, nos valemos del paradigma de mensajes, delegando las responsabilidades finales del problema al segundo objeto, en base a un envío de un mensaje específico del método correspondiente al primer mensaje que toma al emisor como parámetro. Es común que, dentro del nombre de este segundo mensaje esté también el nombre de la clase con la que se va a trabajar, a la cual pertenece el segundo objeto, ya que es un mensaje polimórfico con el cual se especifica con qué objeto se está trabajando.
+Entonces, el segundo mensaje pasa a ser “el que resuelve el problema”, por lo que es importante al momento de diseñar resoluciones a instancias donde se vea posible el uso del double dispatch decidir correctamente cuál será el objeto que cargue con la máxima responsabilidad y que ese mismo reciba el segundo mensaje. 
+2. Lógica de instanciado
+Cuando creamos un objeto, lo hacemos con un método de clase (ya que todavía no existe un objeto con el que interactuar) para que esta instancie un objeto nuevo y colabore con él para inicializarlo, posiblemente con información dada por el usuario.
+Los métodos de clase manejan una mejor sintaxis que, además, desliga la instanciación del objeto de la implementación. Estos métodos también se encargan de verificar entradas válidas en caso de recibir parámetros para la instanciación.
+3. Nombres de las categorías de métodos
+Con lo que vimos hasta ahora los métodos están categorizados por las responsabilidades, por ejemplo comparing, initialization, arithmetic operations, etc. También vemos categorías que indican métodos privados, utilizados para testing, lo que indicaría que las categorías donde ponemos los métodos también podrían indicar restricciones sobre quién puede invocarlos. Por ejemplo: a veces creamos métodos muy específicos que pueden entrar en la categoría 'testing', ya que de otra manera serían métodos sin mucha razón de ser para ser utilizados en otros contextos.
+
+
+
+
+
+
+
+
+
+
+
+
+4.  Subclass Responsibility
+Poner el mismo mensaje que todas las subclases saben responder con “self subclassResponsability” lleva al usuario a entender que no debería estar llamando a ese mensaje desde la clase abstracta y, por tanto, que no debería instanciar a la superclase para cumplir sus objetivos. También, incluso si estamos en etapa de desarrollo, indica que las subclases deben sobreescribir este método con una implementación concreta.
+5. No rompas
+El encapsulamiento es importante cuando programamos ya que nos permite tener un código que nosotros, los que lo hicimos, sabemos que está controlado dentro de sus propios parámetros: si fuera la intención de alguien variar el estado u obtener información que no queremos dar de nuestras invenciones, implementaciones, etc., un código que rompe el encapsulamiento se lo permitiría. Otra importancia del encapsulamiento de la información es darle al usuario una mayor facilidad al momento de utilizar nuestro código: el usuario no debería necesitar información interna para realizar él mismo lo que deberíamos haber implementado nosotros. En el ejemplo de los meteoritos visto en clase, podemos pensar este último punto como que alguien que quisiera saber el área del meteorito únicamente debería saber que existe un método que lo calcula, no debería tener que saber cómo se calcula ni preocuparse por obtener las mediciones de sus lados para calcularlas él mismo.
